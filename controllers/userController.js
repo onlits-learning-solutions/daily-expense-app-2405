@@ -21,9 +21,9 @@ exports.authenticate = async (req, res) => {
   if (user[0]) {
     if (user[0].password == req.body.password) {
       const key = "sldfjslfj00980sdfjlsfj$#";
-      res.send(key);
+      res.json(key);
     }
   }
   else
-    res.send(null);
+    res.status(404).json(null);
 }
