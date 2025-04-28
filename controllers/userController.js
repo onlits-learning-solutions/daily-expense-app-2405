@@ -17,13 +17,15 @@ exports.postUser = (req, res) => {
 }
 
 exports.authenticate = async (req, res) => {
+  let key = null;
   const user = await User.find({ email: req.body.email })
+  res.status(401);
   if (user[0]) {
     if (user[0].password == req.body.password) {
-      const key = "sldfjslfj00980sdfjlsfj$#";
-      res.json(key);
+      key = "sldfjslfj00980sdfjlsfj$#";
+      res.status(200);
     }
   }
-  else
-    res.status(404).json(null);
+
+  res.json(key);
 }
